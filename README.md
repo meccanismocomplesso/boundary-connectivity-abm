@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20144949.svg)](https://doi.org/10.5281/zenodo.20144949)
+
 # Boundary-Mediated Global Connectivity in Structured Agent-Based Systems
 
 Python implementation of an agent-based model for studying the emergence of global connectivity through boundary-mediated transitions in structured attractor landscapes.
