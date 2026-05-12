@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+title: "Boundary-Mediated Global Connectivity in Structured Agent-Based Systems"
+message: "If you use this software, please cite it using the metadata below."
+type: software
+
+authors:
+  - family-names: NELLI
+    given-names: FABIO
+
+version: "1.0.0"
+date-released: 2026-05-12
+
+abstract: >
+  Python implementation of the agent-based model presented in the paper
+  "Boundary-Mediated Global Connectivity in Structured Agent-Based Systems".
+  The repository contains the simulation framework, experimental pipeline,
+  data aggregation scripts, and figure-generation workflow used to reproduce
+  all results reported in the manuscript.
+
+license: "MIT"
+
+repository-code: "https://github.com/meccanismocomplesso/boundary-connectivity-abm"
+
+keywords:
+  - agent-based modeling
+  - complex systems
+  - emergence
+  - self-organization
+  - network dynamics
+  - exploratory agents
+  - attractor landscapes
+  - percolation
+  - stochastic dynamics
+  - computational social science
