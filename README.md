@@ -1,12 +1,10 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20144949.svg)](https://doi.org/10.5281/zenodo.20144949)
-
 # Boundary-Mediated Global Connectivity in Structured Agent-Based Systems
 
 Python implementation of an agent-based model for studying the emergence of global connectivity through boundary-mediated transitions in structured attractor landscapes.
 
 This repository contains the complete simulation framework, experimental pipeline, data aggregation workflow, and figure-generation scripts associated with the paper:
 
-> **Boundary-Mediated Global Connectivity in Structured Agent-Based Systems**  
+> **From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes**  
 > Fabio Nelli
 
 ---
@@ -37,10 +35,10 @@ The study analyzes how localized boundary-crossing events accumulate into transi
 │
 ├── paper_submission_outputs/
 ├── supplementary_robustness_K_outputs/
+├── supplementary_slope_outputs/
 │
 ├── requirements.txt
 ├── LICENSE
-├── CITATION.cff
 └── README.md
 ```
 
@@ -63,31 +61,39 @@ pip install -r requirements.txt
 
 ---
 
-# Running the Simulations
+# Quick Start
 
 ## Main experimental pipeline
+
+Run the main experimental workflow:
 
 ```bash
 python main_paper_submission.py
 ```
 
-This script reproduces the main experiments and generates the figures used in the paper.
+This script reproduces the main experiments and generates the figures reported in the paper.
 
 ---
 
 ## Supplementary analyses
 
-### Robustness to the number of attractors
+### Robustness to the number of attractors (Supplementary Figure S2)
 
 ```bash
 python figure_S2_robustness_K.py
 ```
 
-### Transition-slope analysis
+### Transition-slope analysis (Supplementary Figure S3)
 
 ```bash
 python figure_S3_transition_slope.py
 ```
+
+Generated outputs will be stored in:
+
+- `paper_submission_outputs/`
+- `supplementary_robustness_K_outputs/`
+- `supplementary_slope_outputs/`
 
 ---
 
@@ -139,6 +145,10 @@ All simulations are fully reproducible.
 - All figures are generated directly from simulation outputs.
 - The repository contains the complete workflow used for the paper.
 
+Tested with:
+
+- Python 3.11
+
 ---
 
 # License
@@ -151,13 +161,16 @@ See the `LICENSE` file for details.
 
 # Citation
 
-If you use this repository, please cite the associated paper and repository release.
+If you use this repository in academic work, please cite both the associated paper and the archived Zenodo release.
 
-Zenodo DOI will be added upon archival release.
+Zenodo archive:
 
-Repository:
+https://doi.org/10.5281/zenodo.20145382
+
+GitHub repository:
 
 https://github.com/meccanismocomplesso/boundary-connectivity-abm
+
 
 ---
 
