@@ -2,10 +2,34 @@
 
 Python implementation of an agent-based model for studying the emergence of global connectivity through boundary-mediated transitions in structured attractor landscapes.
 
+## Related Resources
+
+**arXiv preprint**
+
+From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes
+
+arXiv:2606.07344  
+https://arxiv.org/abs/2606.07344
+
+**CoMSES Computational Model Library**
+
+Peer-reviewed computational model (review in progress)
+
+https://www.comses.net/codebases/20606999-844a-40ca-b423-1a5404453d83/
+
+**Zenodo archive**
+
+https://doi.org/10.5281/zenodo.20145382
+
 This repository contains the complete simulation framework, experimental pipeline, data aggregation workflow, and figure-generation scripts associated with the paper:
 
-> **From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes**  
-> Fabio Nelli
+**From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes**
+
+Fabio Nelli
+
+Preprint available at:
+
+https://arxiv.org/abs/2606.07344
 
 ---
 
@@ -149,6 +173,14 @@ Tested with:
 
 - Python 3.11
 
+The model is publicly archived through:
+
+- GitHub (source repository)
+- Zenodo (citable archive)
+- CoMSES Computational Model Library (peer-review and reproducibility review)
+
+The associated manuscript is available as an arXiv preprint.
+
 ---
 
 # License
@@ -161,16 +193,39 @@ See the `LICENSE` file for details.
 
 # Citation
 
-If you use this repository in academic work, please cite both the associated paper and the archived Zenodo release.
+If you use this repository in academic work, please cite the associated paper and archived code release.
 
-Zenodo archive:
+### Paper
+
+Nelli, F. (2026).
+
+*From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes.*
+
+arXiv:2606.07344
+
+https://arxiv.org/abs/2606.07344
+
+### Code archive
+
+Zenodo DOI:
 
 https://doi.org/10.5281/zenodo.20145382
 
-GitHub repository:
+### Repository
 
 https://github.com/meccanismocomplesso/boundary-connectivity-abm
 
+
+---
+
+## Project Status
+
+Current status:
+
+- arXiv preprint published (arXiv:2606.07344)
+- Code archived on Zenodo
+- Computational model under peer review at CoMSES
+- Journal submission in preparation
 
 ---
 
