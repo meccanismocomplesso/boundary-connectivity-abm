@@ -9,7 +9,7 @@ The model asks whether heterogeneous stochastic mobility in a fixed, structured 
 
 ## Release
 
-This repository documents software release **v1.1.0**, prepared for the revised manuscript and supplementary material. It supersedes the public v1.0.x implementation while preserving the fixed-landscape research design.
+This repository documents software release **v1.1.1**, prepared for the revised manuscript and supplementary material. It supersedes the public v1.0.x implementation while preserving the fixed-landscape research design. Version 1.1.1 is a packaging correction to v1.1.0 and does not change the scientific model or analysis code.
 
 The archived software record is available through the Zenodo concept DOI:
 
@@ -146,7 +146,7 @@ Default values are defined in `config.py`. Experiment-specific constants and see
 
 ## Version history
 
-See [CHANGELOG.md](CHANGELOG.md). Release v1.1.0 expands the robustness and scaling analyses, strengthens diagnostic exports and aligns the software with the revised manuscript and supplementary material.
+See [CHANGELOG.md](CHANGELOG.md). Release v1.1.0 expanded the robustness and scaling analyses, strengthened diagnostic exports and aligned the software with the revised manuscript and supplementary material. Release v1.1.1 removes stale generated data inherited from the earlier repository history.
 
 ## License
 
@@ -156,7 +156,7 @@ The software is distributed under the MIT License. See [LICENSE](LICENSE).
 
 Use the repository's `CITATION.cff` metadata or cite the archived software record:
 
-> Nelli, F. (2026). *Boundary crossings as a minimal mechanism for global connectivity in structured landscapes* (Version 1.1.0) [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.20144948>
+> Nelli, F. (2026). *Boundary crossings as a minimal mechanism for global connectivity in structured landscapes* (Version 1.1.1) [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.20144948>
 
 The manuscript and software are separate research objects. When using the scientific results as well as the implementation, cite both the relevant manuscript version and the software release.
 

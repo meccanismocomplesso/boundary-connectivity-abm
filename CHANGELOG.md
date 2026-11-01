@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 The project follows semantic versioning for the public software releases.
 
+## [1.1.1] - 2026-11-01
+
+### Fixed
+
+- Removed ten stale generated-data files inherited from the v1.0.x repository history.
+- Ensured that the release archive follows the documented source-only packaging policy: simulation outputs are regenerated from the released scripts and fixed seeds.
+
+This packaging correction does not modify the model, experimental design, analysis code or scientific conclusions introduced in v1.1.0.
+
 ## [1.1.0] - 2026-11-01
 
 ### Added
@@ -40,5 +49,6 @@ The project follows semantic versioning for the public software releases.
 - Main experimental pipeline and the first robustness and transition-slope workflows.
 - Reproducibility metadata, pinned dependencies and MIT license.
 
+[1.1.1]: https://github.com/meccanismocomplesso/boundary-connectivity-abm/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/meccanismocomplesso/boundary-connectivity-abm/compare/v1.0.1...v1.1.0
 [1.0.0]: https://github.com/meccanismocomplesso/boundary-connectivity-abm/releases/tag/v.1.0.0
