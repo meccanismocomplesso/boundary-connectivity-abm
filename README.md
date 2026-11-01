@@ -1,234 +1,165 @@
-# Boundary-Mediated Global Connectivity in Structured Agent-Based Systems
+# Boundary crossings as a minimal mechanism for global connectivity in structured landscapes
 
-Python implementation of an agent-based model for studying the emergence of global connectivity through boundary-mediated transitions in structured attractor landscapes.
+Python implementation and reproducibility workflow for the agent-based model described in:
 
-## Related Resources
+> **Boundary crossings as a minimal mechanism for global connectivity in structured landscapes**
+> Fabio Nelli (Independent Researcher)
 
-**arXiv preprint**
+The model asks whether heterogeneous stochastic mobility in a fixed, structured multi-attractor landscape is sufficient to generate a globally connected transition network. It compares a minimal random-walk baseline with interface-sensitive and novelty-sensitive exploratory rules and with a flat-landscape control.
 
-From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes
+## Release
 
-arXiv:2606.07344  
-https://arxiv.org/abs/2606.07344
+This repository documents software release **v1.1.0**, prepared for the revised manuscript and supplementary material. It supersedes the public v1.0.x implementation while preserving the fixed-landscape research design.
 
-**CoMSES Computational Model Library**
+The archived software record is available through the Zenodo concept DOI:
 
-Peer-reviewed computational model (review in progress)
+<https://doi.org/10.5281/zenodo.20144948>
 
-https://www.comses.net/codebases/20606999-844a-40ca-b423-1a5404453d83/
-
-**Zenodo archive**
-
-https://doi.org/10.5281/zenodo.20145382
-
-This repository contains the complete simulation framework, experimental pipeline, data aggregation workflow, and figure-generation scripts associated with the paper:
-
-**From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes**
-
-Fabio Nelli
-
-Preprint available at:
-
-https://arxiv.org/abs/2606.07344
-
----
-
-# Overview
-
-The model investigates how heterogeneous mobility interacting with a structured multi-attractor landscape can generate large-scale connectivity without requiring optimization, learning, or goal-directed exploration.
-
-Agents move in a continuous two-dimensional environment organized into attractor basins. A fraction of agents exhibits higher-mobility exploratory dynamics, while the remaining agents remain locally constrained within basins.
-
-The study analyzes how localized boundary-crossing events accumulate into transition networks that progressively integrate the explored state space.
-
----
-
-# Repository Structure
+## Repository structure
 
 ```text
 .
-├── agents.py
-├── config.py
-├── model.py
-├── utils.py
-│
-├── run.py
-├── main_paper_submission.py
-├── figure_S2_robustness_K.py
-├── figure_S3_transition_slope.py
-│
-├── paper_submission_outputs/
-├── supplementary_robustness_K_outputs/
-├── supplementary_slope_outputs/
-│
-├── requirements.txt
-├── LICENSE
-└── README.md
+|-- agents.py
+|-- config.py
+|-- model.py
+|-- run.py
+|-- utils.py
+|-- main_paper_submission.py
+|-- supplementary_network_snapshot.py
+|-- supplementary_population_scaling.py
+|-- supplementary_robustness_scaling.py
+|-- supplementary_transition_slope.py
+|-- requirements.txt
+|-- CITATION.cff
+|-- CHANGELOG.md
+|-- LICENSE
+`-- README.md
 ```
 
----
+### Core modules
 
-# Installation
+- `agents.py`: embedded and exploratory agent dynamics.
+- `config.py`: default model and simulation parameters.
+- `model.py`: fixed-landscape model, transition tracking and data collection.
+- `run.py`: reusable single-run entry point and optional CSV export.
+- `utils.py`: geometry, state assignment and network metrics.
 
-Clone the repository:
+### Experimental pipelines
+
+- `main_paper_submission.py`: main experimental conditions and Figures 1--7. It calls the canonical native-\(K\) robustness routine used for Figure 5.
+- `supplementary_network_snapshot.py`: representative transition-network snapshot.
+- `supplementary_population_scaling.py`: population-size and explorer-count scaling analyses.
+- `supplementary_robustness_scaling.py`: native-geometry, constant-spacing, time-horizon and crowding controls across multiple values of \(K\).
+- `supplementary_transition_slope.py`: transition-slope analysis derived from the main full-model aggregate output.
+
+## Installation
+
+Clone the repository and create an isolated environment:
 
 ```bash
 git clone https://github.com/meccanismocomplesso/boundary-connectivity-abm.git
 cd boundary-connectivity-abm
+python -m venv .venv
 ```
 
-Install dependencies:
+Activate the environment on Linux or macOS:
 
 ```bash
-pip install -r requirements.txt
+source .venv/bin/activate
 ```
 
----
+On Windows PowerShell:
 
-# Quick Start
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
-## Main experimental pipeline
+Install the pinned dependencies:
 
-Run the main experimental workflow:
+```bash
+python -m pip install -r requirements.txt
+```
+
+The release has been checked with Python 3.12 using the pinned environment. The original workflow was also developed under Python 3.11.
+
+## Quick smoke test
+
+Run the default single simulation:
+
+```bash
+python run.py
+```
+
+This writes optional run-level tables to `output/`. For a faster programmatic check:
+
+```bash
+python -c "from run import run_model; m = run_model(n_agents=40, n_attractors=3, steps=10, seed=42); print(m.transition_graph.number_of_edges())"
+```
+
+## Reproducing the analyses
+
+Run the main pipeline first:
 
 ```bash
 python main_paper_submission.py
 ```
 
-This script reproduces the main experiments and generates the figures reported in the paper.
+It creates:
 
----
-
-## Supplementary analyses
-
-### Robustness to the number of attractors (Supplementary Figure S2)
-
-```bash
-python figure_S2_robustness_K.py
+```text
+paper_submission_outputs/
+|-- data/
+`-- figures/
 ```
 
-### Transition-slope analysis (Supplementary Figure S3)
+Then run the supplementary pipelines as required:
 
 ```bash
-python figure_S3_transition_slope.py
+python supplementary_network_snapshot.py
+python supplementary_population_scaling.py
+python supplementary_robustness_scaling.py
+python supplementary_transition_slope.py
 ```
 
-Generated outputs will be stored in:
+`supplementary_transition_slope.py` expects `paper_submission_outputs/data/full_model_aggregated.csv`, so the main pipeline must be completed before that script is executed.
 
-- `paper_submission_outputs/`
-- `supplementary_robustness_K_outputs/`
-- `supplementary_slope_outputs/`
+The scripts create the following output directories:
 
----
+- `supplementary_network_snapshots_outputs/`
+- `supplementary_population_scaling_outputs/`
+- `supplementary_K_robustness_outputs/`
+- `supplementary_transition_slope_outputs/`
 
-# Outputs
+The complete pipelines include multiple parameter values and independent simulation replicates and can therefore require substantial runtime and memory. Output directories are intentionally excluded from version control because they are generated from the released source and fixed seeds.
 
-Simulation outputs and generated figures are stored in:
+## Experimental design and reproducibility
 
-- `paper_submission_outputs/`
-- `supplementary_robustness_K_outputs/`
-- `supplementary_slope_outputs/`
+- The attractor set is fixed during each run.
+- The main landscape uses \(K=3\) attractors.
+- Robustness analyses examine larger \(K\), including native-geometry and constant-spacing designs.
+- Explorer assignment is Bernoulli by default.
+- Independent runs use explicit deterministic seeds.
+- The transition network is directed; reported mean degree refers to total degree unless a script labels a different quantity explicitly.
+- Figures and processed tables are generated directly by the corresponding scripts.
 
-These directories contain processed data and figures used in the manuscript.
+Default values are defined in `config.py`. Experiment-specific constants and seed schedules are declared near the top of each pipeline script.
 
----
+## Version history
 
-# Model Description
+See [CHANGELOG.md](CHANGELOG.md). Release v1.1.0 expands the robustness and scaling analyses, strengthens diagnostic exports and aligns the software with the revised manuscript and supplementary material.
 
-The model consists of:
+## License
 
-- a population of agents evolving in continuous 2D space,
-- a structured landscape composed of multiple attractor basins,
-- heterogeneous mobility dynamics,
-- transition-network construction from observed state changes.
+The software is distributed under the MIT License. See [LICENSE](LICENSE).
 
-The study compares:
+## Citation
 
-- baseline random-walk exploration,
-- interface-sensitive exploration,
-- novelty-biased exploration,
-- full candidate-selection dynamics,
-- flat-landscape controls.
+Use the repository's `CITATION.cff` metadata or cite the archived software record:
 
-The resulting transition graphs are analyzed using network-science metrics including:
+> Nelli, F. (2026). *Boundary crossings as a minimal mechanism for global connectivity in structured landscapes* (Version 1.1.0) [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.20144948>
 
-- graph density,
-- mean out-degree,
-- connected components,
-- giant weakly connected component,
-- giant strongly connected component.
+The manuscript and software are separate research objects. When using the scientific results as well as the implementation, cite both the relevant manuscript version and the software release.
 
----
+## Contact
 
-# Reproducibility
-
-All simulations are fully reproducible.
-
-- Random seeds are explicitly controlled.
-- Experimental configurations are defined in configuration files.
-- All figures are generated directly from simulation outputs.
-- The repository contains the complete workflow used for the paper.
-
-Tested with:
-
-- Python 3.11
-
-The model is publicly archived through:
-
-- GitHub (source repository)
-- Zenodo (citable archive)
-- CoMSES Computational Model Library (peer-review and reproducibility review)
-
-The associated manuscript is available as an arXiv preprint.
-
----
-
-# License
-
-This project is distributed under the MIT License.
-
-See the `LICENSE` file for details.
-
----
-
-# Citation
-
-If you use this repository in academic work, please cite the associated paper and archived code release.
-
-### Paper
-
-Nelli, F. (2026).
-
-*From Boundary Crossings to Global Connectivity: A Minimal Mechanism in Structured Agent-Based Landscapes.*
-
-arXiv:2606.07344
-
-https://arxiv.org/abs/2606.07344
-
-### Code archive
-
-Zenodo DOI:
-
-https://doi.org/10.5281/zenodo.20145382
-
-### Repository
-
-https://github.com/meccanismocomplesso/boundary-connectivity-abm
-
-
----
-
-## Project Status
-
-Current status:
-
-- arXiv preprint published (arXiv:2606.07344)
-- Code archived on Zenodo
-- Computational model under peer review at CoMSES
-- Journal submission in preparation
-
----
-
-# Keywords
-
-Agent-based modeling, complex systems, emergence, self-organization, network science, attractor landscapes, exploratory dynamics, stochastic processes, percolation, computational social science.
+Fabio Nelli, Independent Researcher, Rome, Italy.

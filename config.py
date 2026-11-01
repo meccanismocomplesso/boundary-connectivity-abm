@@ -1,48 +1,58 @@
+# ============================================================
+# Fixed-landscape minimal-mechanism configuration
+# ============================================================
+#
+# First-paper mechanism:
+#
+#   fixed structured landscape
+#       -> heterogeneous mobility
+#       -> interface-sensitive exploration
+#       -> novelty-sensitive exploration
+#       -> boundary crossings
+#       -> transition graph
+#       -> global connectivity
+#
+# Endogenous attractor creation, tension dynamics and exploratory
+# drift toward the current attractor are intentionally excluded.
+# ============================================================
+
+# Spatial domain
 GRID_WIDTH = 50
 GRID_HEIGHT = 50
 
+# Population
 N_AGENTS = 200
 EXPLORATORY_RATIO = 0.10
-
-REQUIRE_EXPLORERS_FOR_EMERGENCE = True
 BERNOULLI_EXPLORER_ASSIGNMENT = True
 
+# Fixed attractor landscape
 ATTRACTOR_RADIUS = 8.0
+ATTRACTOR_STRENGTH = 0.30
 INTERFACE_THRESHOLD = 3.0
 
-ATTRACTOR_STRENGTH = 0.30
+# "structured": embedded agents follow the nearest-attractor gradient.
+# "flat_control": attractor labels remain available only for operational
+# state assignment and transition measurement; they exert no force on movement.
+LANDSCAPE_MODE = "structured"
+
+# Movement amplitudes
+EMBEDDED_MOVE_SCALE = 0.5
 EXPLORATORY_MOVE_SCALE = 2.0
+EXPLORATORY_RULE = "random_walk"
 
-# exploratory candidate scoring
-NOVELTY_BONUS = 0.0 # 1.0
+# Candidate-selection parameters
+N_CANDIDATES = 5
 INTERFACE_BONUS_VALUE = 0.5
-INTERFACE_BONUS_MODE = "none"   # "real", "random", "none"
-EXPLORATORY_RULE = "random_walk"   # "structured" or "random_walk"
-LANDSCAPE_MODE = "flat_control"   # "structured" or "flat_control"
+NOVELTY_BONUS = 1.0
 
+# Available modes used by experiment scripts: "real" or "none".
+INTERFACE_BONUS_MODE = "real"
 
-# random-zone control for boundary specificity test
-RANDOM_ZONE_GRID = 10
-RANDOM_ZONE_FRACTION = 0.15
+# Infinitesimal random term used only to break exact score ties.
+CANDIDATE_TIE_EPSILON = 1e-9
 
-# tension dynamics
-LOCAL_TENSION_BASE = 0.02
-LOCAL_DENSITY_WEIGHT = 0.2
-LOCAL_EXPLORER_WEIGHT = 0.4
-LOCAL_INTERFACE_WEIGHT = 0.4
-LOCAL_TRANSITION_WEIGHT = 0.6
-TENSION_DECAY = 0.01
-
-TRANSITION_THRESHOLD = 0.8
-
-EMERGENT_ATTRACTOR_RADIUS = 5.0
-EMERGENT_ATTRACTOR_STRENGTH = 0.24
-
-MAX_ATTRACTORS = 40
-
+# Simulation protocol
 MAX_STEPS = 300
-N_RUNS = 30
+N_RUNS = 20
 RANDOM_SEED = 42
-
-
-
+CI_Z = 1.96

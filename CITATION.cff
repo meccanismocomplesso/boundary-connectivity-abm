@@ -1,34 +1,35 @@
 cff-version: 1.2.0
-title: "Boundary-Mediated Global Connectivity in Structured Agent-Based Systems"
-message: "If you use this software, please cite it using the metadata below."
+message: "If you use this software, please cite the archived release and the associated manuscript."
+title: "Boundary crossings as a minimal mechanism for global connectivity in structured landscapes"
 type: software
 
 authors:
-  - family-names: NELLI
-    given-names: FABIO
+  - family-names: "Nelli"
+    given-names: "Fabio"
 
-version: "1.0.0"
-date-released: 2026-05-12
+version: "1.1.0"
+date-released: 2026-11-01
 
-abstract: >
-  Python implementation of the agent-based model presented in the paper
-  "Boundary-Mediated Global Connectivity in Structured Agent-Based Systems".
-  The repository contains the simulation framework, experimental pipeline,
-  data aggregation scripts, and figure-generation workflow used to reproduce
-  all results reported in the manuscript.
-
-license: "MIT"
-
+doi: "10.5281/zenodo.20144948"
 repository-code: "https://github.com/meccanismocomplesso/boundary-connectivity-abm"
+url: "https://doi.org/10.5281/zenodo.20144948"
+license: MIT
+
+abstract: >-
+  Python implementation and reproducibility workflow for an agent-based
+  model of boundary-mediated global connectivity in fixed structured
+  multi-attractor landscapes. The release contains the core simulation,
+  main experimental pipeline, robustness analyses, population-scaling
+  analyses, transition-network diagnostics and figure-generation scripts
+  associated with the revised manuscript and supplementary material.
 
 keywords:
   - agent-based modeling
   - complex systems
-  - emergence
-  - self-organization
-  - network dynamics
-  - exploratory agents
+  - network connectivity
   - attractor landscapes
-  - percolation
+  - boundary crossings
+  - heterogeneous mobility
   - stochastic dynamics
+  - robustness analysis
   - computational social science
